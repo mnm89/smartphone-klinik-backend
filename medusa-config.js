@@ -25,7 +25,7 @@ const plugins = [
     resolve: "@medusajs/admin",
     /** @type {import('@medusajs/admin').PluginOptions} */
     options: {
-      autoRebuild: true,
+      serve: process.env.NODE_ENV === "development",
       develop: {
         open: process.env.OPEN_BROWSER !== "false",
       },
@@ -56,6 +56,7 @@ const projectConfig = {
   database_url: ensureEnvVariable("DATABASE_URL"),
   admin_cors: ensureEnvVariable("ADMIN_CORS"),
   redis_url: ensureEnvVariable("REDIS_URL"),
+  worker_mode: process.env.MEDUSA_WORKER_MODE,
 };
 
 /** @type {import('@medusajs/medusa').ConfigModule} */
